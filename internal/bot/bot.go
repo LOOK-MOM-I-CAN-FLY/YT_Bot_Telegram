@@ -3,6 +3,7 @@ package bot
 import (
 	"log"
 	"project/internal/handler"
+	"project/internal/storage"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
@@ -14,7 +15,12 @@ func StartBot(token string) {
 	}
 
 	bot.Debug = true
-	log.Printf("Authorized on account %s", bot.Self.UserName)
+	log.Printf("Авторизован под аккаунтом %s", bot.Self.UserName)
+
+	// Проверяем наличие yt-dlp
+	if err := storage.CheckYtDlp(); err != nil {
+		log.Fatalf("yt-dlp не найден: %v", err)
+	}
 
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
