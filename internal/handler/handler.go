@@ -3,6 +3,7 @@ package handler
 import (
 	"log"
 	"project/internal/downloader"
+	"project/internal/storage"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
@@ -35,5 +36,10 @@ func HandleYouTubeLink(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 	_, err = bot.Send(video)
 	if err != nil {
 		log.Println("Ошибка при отправке видео:", err)
+	}
+
+	// Удаляем скачанные файлы после отправки
+	if err := storage.CleanupDownloads(); err != nil {
+		log.Println("Ошибка при очистке загрузок:", err)
 	}
 }
