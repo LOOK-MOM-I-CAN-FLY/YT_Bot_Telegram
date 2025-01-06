@@ -17,5 +17,5 @@ func main() {
 		log.Fatal("TELEGRAM_BOT_TOKEN не установлен")
 	}
 
-	bot.StartBot(token
+	bot.StartBot(token)
 }
