@@ -10,7 +10,7 @@ import (
 func LoadEnv() error {
 	err := godotenv.Load()
 	if err != nil {
-		log.Println("Файл .env не найден, используются переменные окружения из системы")
+		log.Println("File .env not found, environment variables from the system are used")
 	}
 	return err
 }
