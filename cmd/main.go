@@ -9,12 +9,12 @@ import (
 func main() {
 	// Загружаем переменные окружения
 	if err := config.LoadEnv(); err != nil {
-		log.Fatalf("Ошибка загрузки .env: %v", err)
+		log.Fatalf("Error load .env: %v", err)
 	}
 
 	token := config.GetBotToken()
 	if token == "" {
-		log.Fatal("TELEGRAM_BOT_TOKEN не установлен")
+		log.Fatal("TELEGRAM_BOT_TOKEN not installed")
 	}
 
 	bot.StartBot(token)
