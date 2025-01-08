@@ -11,10 +11,10 @@ import (
 func HandleCommand(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 	switch message.Command() {
 	case "start":
-		msg := tgbotapi.NewMessage(message.Chat.ID, "Привет! Отправь мне ссылку на YouTube.")
+		msg := tgbotapi.NewMessage(message.Chat.ID, "Hi! Send me the YouTube link..")
 		bot.Send(msg)
 	default:
-		msg := tgbotapi.NewMessage(message.Chat.ID, "Неизвестная команда.")
+		msg := tgbotapi.NewMessage(message.Chat.ID, "Unknown command.")
 		bot.Send(msg)
 	}
 }
@@ -23,11 +23,11 @@ func HandleYouTubeLink(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 	url := message.Text
 	chatID := message.Chat.ID
 
-	bot.Send(tgbotapi.NewMessage(chatID, "Скачиваю видео..."))
+	bot.Send(tgbotapi.NewMessage(chatID, "I'm downloading a video..."))
 
 	filePath, err := downloader.DownloadYouTubeVideo(url)
 	if err != nil {
-		bot.Send(tgbotapi.NewMessage(chatID, "Ошибка при загрузке видео."))
+		bot.Send(tgbotapi.NewMessage(chatID, "Error when uploading video."))
 		log.Println(err)
 		return
 	}
@@ -35,11 +35,10 @@ func HandleYouTubeLink(bot *tgbotapi.BotAPI, message *tgbotapi.Message) {
 	video := tgbotapi.NewVideo(chatID, tgbotapi.FilePath(filePath))
 	_, err = bot.Send(video)
 	if err != nil {
-		log.Println("Ошибка при отправке видео:", err)
+		log.Println("Error when sending video:", err)
 	}
 
-	// Удаляем скачанные файлы после отправки
 	if err := storage.CleanupDownloads(); err != nil {
-		log.Println("Ошибка при очистке загрузок:", err)
+		log.Println("Error clearing downloads:", err)
 	}
 }
