@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	// Загружаем
+
 	if err := config.LoadEnv(); err != nil {
 		log.Fatalf("Error load .env: %v", err)
 	}
