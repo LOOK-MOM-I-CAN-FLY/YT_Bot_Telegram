@@ -32,6 +32,8 @@ func StartBot(token string) {
 			continue
 		}
 
+		log.Printf("Received message: %v", update.Message.Text)
+
 		if update.Message.IsCommand() {
 			handler.HandleCommand(bot, update.Message)
 		} else if update.Message.Text != "" {
