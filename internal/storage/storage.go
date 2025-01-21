@@ -16,7 +16,7 @@ func CleanupDownloads() error {
 
 	for _, file := range files {
 		if err := os.Remove(file); err != nil {
-			return fmt.Errorf("ошибка удаления файла %s: %v", file, err)
+			return fmt.Errorf("Delete file error %s: %v", file, err)
 		}
 	}
 	return nil
@@ -25,7 +25,7 @@ func CleanupDownloads() error {
 func CheckYtDlp() error {
 	_, err := exec.LookPath("yt-dlp")
 	if err != nil {
-		return fmt.Errorf("yt-dlp не найден, установите его перед запуском бота")
+		return fmt.Errorf("yt-dlp not search, install it before start using bot")
 	}
 	return nil
 }
