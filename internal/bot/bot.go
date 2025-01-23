@@ -17,7 +17,7 @@ func StartBot(token string) {
 	bot.Debug = true
 	log.Printf("Logged in under an account %s", bot.Self.UserName)
 
-	// Проверяем наличие yt-dlp
+
 	if err := storage.CheckYtDlp(); err != nil {
 		log.Fatalf("yt-dlp не найден: %v", err)
 	}
