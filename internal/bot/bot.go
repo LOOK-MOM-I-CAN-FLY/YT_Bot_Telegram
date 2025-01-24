@@ -15,7 +15,7 @@ func StartBot(token string) {
 	}
 
 	bot.Debug = true
-	log.Printf("Logged in under an account %s", bot.Self.UserName)
+	log.Printf("Logged in with an account %s", bot.Self.UserName)
 
 
 	if err := storage.CheckYtDlp(); err != nil {
