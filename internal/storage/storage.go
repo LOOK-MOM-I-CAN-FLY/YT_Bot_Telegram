@@ -25,7 +25,7 @@ func CleanupDownloads() error {
 func CheckYtDlp() error {
 	_, err := exec.LookPath("yt-dlp")
 	if err != nil {
-		return fmt.Errorf("yt-dlp not search, install it before start using bot")
+		return fmt.Errorf("yt-dlp does not perform a search, install it before using both")
 	}
 	return nil
 }
