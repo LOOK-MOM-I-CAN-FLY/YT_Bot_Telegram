@@ -11,7 +11,7 @@ import (
 func DownloadYouTubeVideo(url string) (string, error) {
 	outputDir := "downloads"
 	if _, err := os.Stat(outputDir); os.IsNotExist(err) {
-		os.Mkdir(oututDir, os.ModePerm)
+		os.Mkdir(outputDir, os.ModePerm)
 	}
 
 
