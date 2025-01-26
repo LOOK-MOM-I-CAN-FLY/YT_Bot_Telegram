@@ -15,11 +15,11 @@ func StartBot(token string) {
 	}
 
 	bot.Debug = true
-	log.Printf("Logged in with an account %s", bot.Self.UserName)
+	log.Printf("Logged in under an account %s", bot.Self.UserName)
 
-
+	// Проверяем наличие yt-dlp
 	if err := storage.CheckYtDlp(); err != nil {
-		log.Fatalf("yt-dlp not found: %v", err)
+		log.Fatalf("yt-dlp не найден: %v", err)
 	}
 
 	u := tgbotapi.NewUpdate(0)
@@ -34,9 +34,8 @@ func StartBot(token string) {
 
 		log.Printf("Received message: %v", update.Message.Text)
 
-		if update.Message.IsCommand() {
-			handler.HandleCommand(bot, update.Message)
-		} else if update.Message.Text != "" {
+		// Check if the message is a command or a valid YouTube link
+		if update.Message.IsCommand() || handler.ValidateYouTubeURL(update.Message.Text) {
 			handler.HandleYouTubeLink(bot, update.Message)
 		}
 	}
