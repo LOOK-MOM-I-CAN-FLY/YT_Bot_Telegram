@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// DownloadYouTubeVideo загружает видео с YouTube по ссылке
+
 func DownloadYouTubeVideo(url string) (string, error) {
 	outputDir := "downloads"
 	if _, err := os.Stat(outputDir); os.IsNotExist(err) {
