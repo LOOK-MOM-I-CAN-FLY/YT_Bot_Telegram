@@ -26,7 +26,7 @@ func DownloadYouTubeVideo(url string) (string, error) {
 		if err == nil {
 			break
 		}
-		time.Sleep(2 * time.Second) // Wait before 
+		time.Sleep(2 * time.Second) //
 	}
 
 	if err != nil {
