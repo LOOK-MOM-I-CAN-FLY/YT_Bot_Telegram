@@ -19,7 +19,7 @@ func StartBot(token string) {
 
 
 	if err := storage.CheckYtDlp(); err != nil {
-		log.Fatalf("yt-dlp не найден: %v", err)
+		log.Fatalf("yt-dlp not найден: %v", err)
 	}
 
 	u := tgbotapi.NewUpdate(0)
