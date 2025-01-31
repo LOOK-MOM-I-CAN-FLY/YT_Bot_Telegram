@@ -24,7 +24,7 @@ func DownloadYouTubeVideo(url string) (string, error) {
 	    cmd := exec.Command("yt-dlp", 
 	        "-o", outputTemplate,
 	        "--proxy", "socks5://127.0.0.1:10808", // General proxy
-	        // "--proxy", "http://127.0.0.1:10809", // Alternative вариант
+	        // "--proxy", "http://127.0.0.1:10809", // Alternative option
 	        url)
 		output, err = cmd.CombinedOutput()
 		if err == nil {
