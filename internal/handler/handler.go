@@ -10,7 +10,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-// ValidateYouTubeURL checks if the provided URL is a valid YouTube link
+// ValidateYouTubeURL checks if the provided URL is a valid 
 func ValidateYouTubeURL(link string) bool {
 	parsedURL, err := url.Parse(link)
 	if err != nil {
